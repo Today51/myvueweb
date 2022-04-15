@@ -36,7 +36,10 @@ export default{
 </script>
 
 <style scoped>
-  
+   .the-aside{
+    background: #015e48;
+    grid-area: side;
+  }
 </style>
 
 
