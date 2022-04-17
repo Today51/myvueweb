@@ -38,7 +38,7 @@ export default {
     height: 100vh;
     width: 100%;
     grid-template-rows: 0.1fr 0.9fr;
-    grid-template-columns: 0.2fr 0.8fr ;
+    grid-template-columns: 0.18fr 0.82fr ;
     grid-template-areas:
     "nav nav"
     "side main";
