@@ -33,19 +33,19 @@ export default {
   padding: 0;
 }
   #app {
-    background: #ed5909;
+    background: rgb(36,38,45);
     display: grid;
     height: 100vh;
     width: 100%;
-    grid-template-rows: 0.1fr 0.9fr;
-    grid-template-columns: 0.18fr 0.82fr ;
+    grid-template-rows: 1fr 10fr;
+    grid-template-columns: 1fr 7fr ;
     grid-template-areas:
     "nav nav"
     "side main";
     grid-gap: 0.2rem;
   } 
   .content{
-    background: #3342ea;
+    background: rgb(27,28,30);
     grid-area:main;
   }
 </style>
