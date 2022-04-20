@@ -1,6 +1,14 @@
 <template>
   <!-- 景区概览 -->
-  <div class="overview">景区概览</div>
+  <div class="overview">
+    <div class="title">景区概览{{oneDate}}</div>
+    <div class="items">
+      <div class="item" v-for="(item,index) in overviewData" :key="index">
+        <div class="title">---{{item.title}}</div>
+        <div class="number">---{{item.num}}</div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -10,7 +18,8 @@
       return{
 
       }
-    }
+    },
+    props: ["overviewData","oneDate"]
   }
 </script>
 <style scoped>

@@ -89,7 +89,7 @@ export default{
   ul::before{
     content: "";
     top:0;
-    height: 4px;
+    height: 2px;
     width: 100%;
     background: rgb(248, 190, 0);
     position: absolute;
