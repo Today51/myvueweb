@@ -23,6 +23,7 @@ export default {
           text: `客流趋势分析${this.oneDate}`,
           textStyle: {
             color: 'rgb(194, 194, 194)',
+            fontSize:15,
           },
         },
         grid: {
@@ -49,6 +50,12 @@ export default {
         },
         yAxis: {
           type: "value",
+          splitLine:{
+            lineStyle:{
+              color:'rgb(87,88,93)',
+              type:'dashed'
+            }
+          }
         },
         series: [
           {

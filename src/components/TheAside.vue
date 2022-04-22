@@ -13,7 +13,7 @@ export default{
   name:'the-aside',
   data(){
     return{
-      // name表示景区名字 dbkey表示对应中数据库表名
+      // name表示景区名字 dbkey表示对应中数据库表名 11个景区
       scenicName:[
         {name:'上海世纪公园',dbkey:'century'},
         {name:'上海长风公园',dbkey:'changfeng_park'},

@@ -87,6 +87,10 @@ export default {
 .title{
   width:100%;
   position: relative;
+  color: rgb(204, 204, 204);
+  font-weight: 500;
+  font-size: 15px;
+  margin-left: 10px;
 }
 .title::before{
   content: "";
