@@ -37,9 +37,9 @@ export default {
   methods: {
     autoLoop(){
       let that = this;
-        if(!that.con2.innerHTML){
+
           that.con2.innerHTML=that.con1.innerHTML;
-        }
+
         if(that.box.scrollTop>=that.con1.scrollHeight){
           that.box.scrollTop=0;
         }
@@ -68,6 +68,14 @@ export default {
   },
   computed: {},
   watch: {
+    //   listData: {
+    //   handler: function (newV) {
+    //       this.myListdata = newV;
+    //       this.autoLoop();
+    //   },
+    //   // immediate: true, //首次加载时执行监听
+    //   deep: true, //值改变时执行监听
+    // },
   },
   beforeDestroy () {
     if(this.timer){
