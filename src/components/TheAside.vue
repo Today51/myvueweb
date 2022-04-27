@@ -3,7 +3,7 @@
     <ul class="nameList">
       <li class="item" v-for="(item,index) in scenicName" :key="index" :class="{active:item.name==activeName}" @click="changeColor(item.name)">
         <div @click="goHome(index)" style="display: inline; margin-right:10px">{{scenicName[index].name}}</div>
-        <div class="mask" @click="goModel()"></div>
+        <div class="mask" @click="goModel(index)"></div>
       </li>
     </ul>
   </div>
@@ -54,8 +54,8 @@ export default{
     
   },
   methods: {
-    goModel(){
-      this.$router.push({path:'/model'});
+    goModel(index){
+      this.$router.push({path:'/model',query:{name:this.scenicName[index].name}});
     },
     goHome(index){
       // 向跳转的组件，传递参数

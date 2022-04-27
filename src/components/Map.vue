@@ -125,7 +125,6 @@ export default {
               label: {
                 normal: {
                   formatter: function(params){
-                    console.log(params.name) ;
                     return params.name;
                   },
                   position: "right",
