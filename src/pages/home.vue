@@ -80,15 +80,20 @@ export default {
     getValidDatas(name) {
       getValidDatas(name)
         .then((res) => {
+          console.log("res",res);
           if (this.myData.length != 0) {
             this.myData = [];
-            this.myData = res;
+            this.predictData = [];
+            this.predictData= this.changeIntNum(res.predictData);
+            this.myData = res.data;
             this.getLastDiff(this.myData);
             this.getOverviewData(this.myData);
             this.getChartCategoryData(this.myData);
             this.getChartTimePartData(this.myData);
           } else {
-            this.myData = res;
+            
+            this.predictData = this.changeIntNum(res.predictData);
+            this.myData = res.data;
             this.getLastDiff(this.myData);
             this.getOverviewData(this.myData);
             this.getChartCategoryData(this.myData);
@@ -99,13 +104,29 @@ export default {
           console.log(err);
         });
     },
+    // 将后台传入的人流数据转换为整数 并求出最大值和总值
+    changeIntNum(data){
+      let max=0,predictTodayMaxNum=0,predictTodaySumNum = 0,temp=[];
+      for(let i=0;i<data.length;i++){
+        let IntTemp=parseInt(data[i]);
+        if(max<=IntTemp){
+          max=IntTemp;
+        }
+        predictTodaySumNum+=IntTemp;
+        temp.push(IntTemp)
+      }
+      predictTodayMaxNum=max;
+      this.overviewData[3].num = this.dealLongNum(predictTodaySumNum);
+      this.overviewData[4].num = this.dealLongNum(predictTodayMaxNum);
+      return temp;
+    },
     getLastDiff(data) {
       let long = data.length;
       let flag = 1;
       let oneData = [];
       let oneDate = data[long - 1].time.split(" ")[0];
 
-      let predictData = [],
+      let 
         oneNum = [],
         oneHM = [];
       let toDaySumNum = 0,
@@ -129,16 +150,10 @@ export default {
           // 这里先简单处理一下趋势分析所需的数据
           oneNum.push(num);
           oneHM.push(TempHM);
-          predictData.push(num + Math.floor(num * Math.random()));
+          // predictData.push(num + Math.floor(num * Math.random()));
 
-          // 简单处理预测值，假定10点为最大值
-          if (!this.predictTodayMaxNum) {
-            if (TempHM == "10:00") {
-              predictTodayMaxNum = num;
-            } else {
-              predictTodayMaxNum = num;
-            }
-          }
+          
+          
         }
         if (flag == 2) {
           // 这里可以计算昨日客流总数
@@ -172,14 +187,12 @@ export default {
       }
       this.listData = oneData;
       this.oneDate = oneDate;
-      predictTodaySumNum = toDaySumNum + Math.floor(Math.random() * 10);
       // 统一格式化
       this.overviewData[0].num = this.dealLongNum(toDaySumNum);
       this.overviewData[1].num = this.dealLongNum(yesterdaySumNum);
-      this.overviewData[3].num = this.dealLongNum(predictTodaySumNum);
-      this.overviewData[4].num = this.dealLongNum(predictTodayMaxNum);
 
-      this.predictData = predictData.reverse();
+
+      // this.predictData = predictData.reverse();
       this.oneNum = oneNum.reverse();
       this.oneHM = oneHM.reverse();
     },
@@ -235,8 +248,6 @@ export default {
       }
       return arr.join("");
     },
-    // 处理预测值
-    dealPredictNum(data) {},
     // 获取图表部分的数据 每日客流总数
     getChartCategoryData(data) {
       let result = [],

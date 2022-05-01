@@ -2,7 +2,7 @@
 
 //前端基础访问框架
 import axios from 'axios'
-axios.defaults.timeout = 5000
+axios.defaults.timeout = 300000
 //运行跨域
 // axios.defaults.withCredentials = true
 //content-type响应头
